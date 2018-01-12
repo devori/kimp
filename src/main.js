@@ -2,14 +2,31 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import App from './App';
+import {sync} from 'vuex-router-sync';
+import Vuetify from 'vuetify';
 import router from './router';
+import store from './store';
+import VueCurrencyFilter from "vue-currency-filter";
 
+Vue.use(Vuetify);
+Vue.use(VueCurrencyFilter,
+  {
+    symbol : 'KRW',
+    thousandsSeparator: ',',
+    fractionCount: 0,
+    fractionSeparator: '.',
+    symbolPosition: 'read',
+    symbolSpacing: true
+  })
 Vue.config.productionTip = false;
+
+sync(store, router);
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   template: '<App/>',
-  components: { App },
+  components: {App},
 });
