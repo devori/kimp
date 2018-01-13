@@ -75,7 +75,7 @@
   }
 
   .drop {
-    coloar: #0051c7;
+    color: #0051c7;
   }
 
   .rise {
