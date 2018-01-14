@@ -1,4 +1,11 @@
 <template>
+  <div>
+
+  <div class="header">
+      <div>
+        {{ averageRates() }}
+      </div>
+  </div>
   <v-data-table
     v-bind:headers="headers"
     :items="viewCoins"
@@ -21,6 +28,7 @@
       <td class="text-xs-center">{{ props.item.kimp }}</td>
     </template>
   </v-data-table>
+  </div>
 </template>
 
 <script>
@@ -44,6 +52,11 @@
       ...mapGetters([
         'viewCoins',
       ]),
+    },
+    methods: {
+      averageRates() {
+        return (this.viewCoins.reduce((acc, coin) => acc + parseFloat(coin.kimp), 0) / this.viewCoins.length).toString().substr(0,6);
+      },
     },
     mounted() {
       socketApi.open('wss://crix-websocket.upbit.com/sockjs/449/wsryiuvw/websocket', this.$store)
@@ -72,6 +85,13 @@
 
   a {
     color: #42b983;
+  }
+
+  .header {
+    padding: 10px 70px;
+    height: 30px;
+    display: flex;
+    flex-direction: row-reverse;
   }
 
   .drop {
