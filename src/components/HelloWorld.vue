@@ -17,9 +17,21 @@
       <td class="text-xs-center">
         <div :class="[{rise: props.item.change === 'RISE', drop: props.item.change !== 'RISE'}]">
           {{ props.item.upbitPrice | currency }}
+          <div>
+            <span v-for="change in props.item.recentUpbitPriceChange" :style="{color: change === 'up' ? 'red' : 'blue'}">
+              O
+            </span>
+          </div>
         </div>
       </td>
-      <td class="text-xs-center">{{ props.item.usdKwrPrice | currency}}({{props.item.usdPrice | currency('$', ',', 2)}})</td>
+      <td class="text-xs-center">
+        {{ props.item.usdKwrPrice | currency}}({{props.item.usdPrice | currency('$', ',', 2)}})
+        <div>
+            <span v-for="change in props.item.recentUsdPriceChange" :style="{color: change === 'up' ? 'red' : 'blue'}">
+              O
+            </span>
+        </div>
+      </td>
       <td class="text-xs-center">
         <div :class="[{rise: props.item.change === 'RISE', drop: props.item.change !== 'RISE'}]">
           {{ props.item.signedChangeRate }}

@@ -36,7 +36,13 @@ const default_data = {
 }
 
 export const convertCoinToViewModel = (coin) => {
-  const {code, tradePrice, signedChangePrice, signedChangeRate, change} = coin;
+  const {
+    code,
+    tradePrice,
+    signedChangePrice,
+    signedChangeRate,
+    change,
+  } = coin;
   const [currency, abbr] = code.split('.')[2].split('-');
 
   return {
