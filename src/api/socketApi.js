@@ -40,11 +40,17 @@ export default {
       } else if (data[0] === 'a') {
         const coin = JSON.parse(JSON.parse(data.substr(1, data.length - 1))[0]);
 
-        if (coin.code === COIN_CODES_USDT[COIN_CODES_USDT.length - 1]) {
-          coinStore.dispatch('setUsdKwrPrice', coin.tradePrice);
-        } else if ([...COIN_CODES_USDT, ...COIN_CODES_KWR].indexOf(coin.code) > -1) {
-          coinStore.dispatch('updateCoin', coin);
+        if(coin.type === 'recentCrix') {
+          if (coin.code === COIN_CODES_USDT[COIN_CODES_USDT.length - 1]) {
+            console.log(coin.tradePrice);
+            coinStore.dispatch('setUsdKwrPrice', coin.tradePrice);
+          } else if ([...COIN_CODES_USDT, ...COIN_CODES_KWR].indexOf(coin.code) > -1) {
+            coinStore.dispatch('updateCoin', coin);
+          }
+        } else if(coin.type === 'crixOrderbook') {
+          coinStore.dispatch('updateOrderBook', coin);
         }
+
       } else {
         console.log(data);
       }

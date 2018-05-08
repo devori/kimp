@@ -55,3 +55,19 @@ export const convertCoinToViewModel = (coin) => {
     change,
   }
 };
+
+export const convertOrderBookToViewModel = (coin) => {
+  const {
+    code,
+    orderbookUnits,
+  } = coin;
+
+  const [currency, abbr] = code.split('.')[2].split('-');
+
+  return {
+    code,
+    currency,
+    abbr,
+    orderbookUnits,
+  }
+}

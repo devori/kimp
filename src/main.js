@@ -6,15 +6,19 @@ import {sync} from 'vuex-router-sync';
 import Vuetify from 'vuetify';
 import router from './router';
 import store from './store';
+
 import VueCurrencyFilter from "vue-currency-filter";
+import vueHeadful from 'vue-headful';
+
+Vue.component('vue-headful', vueHeadful);
 
 Vue.use(Vuetify);
 Vue.use(VueCurrencyFilter,
   {
-    symbol : 'KRW',
+    symbol : 'W',
     thousandsSeparator: ',',
-    fractionCount: 0,
-    fractionSeparator: '.',
+    fractionCount: 2,
+    fractionSeparator: '..',
     symbolPosition: 'read',
     symbolSpacing: true
   })

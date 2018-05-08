@@ -1,5 +1,5 @@
 import * as types from "./types";
-import { convertCoinToViewModel } from "../models/coin";
+import {convertCoinToViewModel, convertOrderBookToViewModel} from "../models/coin";
 
 export default {
   updateCoin ({commit}, coin) {
@@ -7,5 +7,8 @@ export default {
   },
   setUsdKwrPrice({commit}, tradePrice) {
     commit(types.SET_UDS_KWR_PRICE, tradePrice);
+  },
+  updateOrderBook({commit}, coin) {
+    commit(types.UPDATE_ORDER_BOOK, convertOrderBookToViewModel(coin));
   }
 };

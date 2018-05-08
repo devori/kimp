@@ -29,5 +29,13 @@ export default {
         recentUsdPriceChange,
       }
     });
+  },
+  viewOrderBookCoins: ({orderBookCoins}) => {
+    return orderBookCoins.map(coin => {
+      coin.sellKimp = (((coin.kwrBuyPrice / (coin.usdtSellPrice)) * 100) - 100).toString().substr(0, 6) + '%';
+      coin.buyKimp = (((coin.kwrSellPrice / (coin.usdtBuyPrice)) * 100) - 100).toString().substr(0, 6) + '%';
+
+      return coin;
+    })
   }
 }

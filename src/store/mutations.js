@@ -73,5 +73,41 @@ export default {
   },
   [types.SET_UDS_KWR_PRICE](state, usdKwrPrice) {
     state.usdKwrPrice = usdKwrPrice;
+  },
+  [types.UPDATE_ORDER_BOOK](state, {code, abbr, currency, orderbookUnits}) {
+    const newCoins = [...state.orderBookCoins];
+    const index = newCoins.findIndex((coin) => abbr === coin.abbr);
+    const newCoin = {...newCoins[index]};
+
+    //kwrSellPrice
+
+    const firstOrderBookUnit = orderbookUnits[0];
+
+    switch (currency) {
+      case 'KRW':
+        newCoin.kwrSellPrice = firstOrderBookUnit.askPrice;
+        newCoin.kwrBuyPrice = firstOrderBookUnit.bidPrice;
+        newCoin.kwrSellSize = firstOrderBookUnit.askSize;
+        newCoin.kwrBuySize = firstOrderBookUnit.bidSize;
+        newCoin.kwrSellVolume = newCoin.kwrSellPrice * newCoin.kwrSellSize;
+        newCoin.kwrBuyVolume = newCoin.kwrBuyPrice * newCoin.kwrBuySize;
+        break;
+      case 'USDT':
+        newCoin.usdtSellPrice = firstOrderBookUnit.askPrice * state.usdKwrPrice;
+        newCoin.usdtBuyPrice = firstOrderBookUnit.bidPrice * state.usdKwrPrice;
+        newCoin.usdtSellSize = firstOrderBookUnit.askSize;
+        newCoin.usdtBuySize = firstOrderBookUnit.bidSize;
+        newCoin.usdtSellVolume = newCoin.usdtSellPrice * newCoin.usdtSellSize;
+        newCoin.usdtBuyVolume = newCoin.usdtBuyPrice * newCoin.usdtBuySize;
+        break;
+      default:
+        return;
+    }
+
+    newCoins[index] = {
+      ...newCoin,
+    };
+
+    state.orderBookCoins = newCoins;
   }
 };

@@ -10,6 +10,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     coins: [...COIN_LIST],
+    orderBookCoins: [...COIN_LIST],
     usdKwrPrice: 0,
   },
   getters,

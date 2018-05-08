@@ -26,6 +26,7 @@ export const COIN_LIST = [
   { name: "지캐시", abbr: "ZEC" },
   { name: "오미세고", abbr: "OMG" },
   { name: "비트코인골드", abbr: "BTG" },
+  { name: "시아코", abbr: "SC" },
   { name: "모네로", abbr: "XMR" },
   { name: "대시", abbr: "DASH" },
 ];
@@ -42,6 +43,7 @@ export const COIN_CODES_USDT = [
   "CRIX.UPBIT.USDT-ZEC",
   "CRIX.UPBIT.USDT-OMG",
   "CRIX.UPBIT.USDT-BTG",
+  "CRIX.UPBIT.USDT-SC",
   "CRIX.UPBIT.USDT-XMR",
   "CRIX.UPBIT.USDT-DASH",
   "CRIX.COINMARKETCAP.KRW-USDT",
@@ -59,6 +61,7 @@ export const COIN_CODES_KWR = [
   "CRIX.UPBIT.KRW-ZEC",
   "CRIX.UPBIT.KRW-OMG",
   "CRIX.UPBIT.KRW-BTG",
+  "CRIX.UPBIT.KRW-SC",
   "CRIX.UPBIT.KRW-XMR",
   "CRIX.UPBIT.KRW-DASH",
   // "CRIX.UPBIT.KRW-SNT",
@@ -85,13 +88,21 @@ export const COIN_CODES_KWR = [
 ]
 
 export const UPBIT_SEND_MESSAGE = [
-  { "ticket": "ram macbook" }, {
+  { "ticket": "ram macbook" },
+  {
     "type": "recentCrix",
     "codes": [
       ...COIN_CODES_KWR,
       ...COIN_CODES_USDT,
     ]
   },
+  {
+    "type":"crixOrderbook",
+    "codes": [
+      ...COIN_CODES_KWR,
+      ...COIN_CODES_USDT,
+    ]
+  }
 ];
 
 // {"type": "crixTrade", "codes": ["CRIX.UPBIT.KRW-XRP"]}, {"type": "crixOrderbook", "codes": ["CRIX.UPBIT.KRW-XRP"]}
