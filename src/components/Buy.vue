@@ -4,8 +4,6 @@
       :title="title"
       description="Description from vue-headful"
     />
-    <div class="header">
-    </div>
     <v-data-table
       v-bind:headers="headers"
       :items="this.$store.getters.viewOrderBookCoins"

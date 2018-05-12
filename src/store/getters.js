@@ -32,6 +32,10 @@ export default {
   },
   viewOrderBookCoins: ({orderBookCoins}) => {
     return orderBookCoins.map(coin => {
+      if(coin.usdtSellPrice === 0) {
+        coin.usdtSellPrice = 1000000000;
+      }
+
       coin.sellKimp = (((coin.kwrBuyPrice / (coin.usdtSellPrice)) * 100) - 100).toString().substr(0, 6) + '%';
       coin.buyKimp = (((coin.kwrSellPrice / (coin.usdtBuyPrice)) * 100) - 100).toString().substr(0, 6) + '%';
 

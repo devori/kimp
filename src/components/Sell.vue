@@ -1,11 +1,9 @@
 <template>
   <div>
     <vue-headful
-      :title="title"
+      :title="`${title}(${this.$store.state.usdKwrPrice}))`"
       description="Description from vue-headful"
     />
-    <div class="header">
-    </div>
     <v-data-table
       v-bind:headers="headers"
       :items="this.$store.getters.viewOrderBookCoins"
@@ -29,6 +27,7 @@
 
 <script>
   import socketApi from '../api/socketApi';
+  import { mapState } from "vuex";
 
   export default {
     name: 'Buy',
@@ -52,7 +51,8 @@
         return this.$store.getters.viewOrderBookCoins.reduce( function (previous, {sellKimp}) {
           return previous > sellKimp ? previous : sellKimp;
         }, 0);
-      }
+      },
+      ...mapState(['count']),
     },
     mounted() {
       socketApi.open('wss://crix-websocket.upbit.com/sockjs/449/wsryiuvw/websocket', this.$store)
