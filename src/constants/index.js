@@ -29,6 +29,7 @@ export const COIN_LIST = [
   { name: "시아코", abbr: "SC" },
   { name: "모네로", abbr: "XMR" },
   { name: "대시", abbr: "DASH" },
+  { name: "트론", abbr: "TRX" },
 ];
 
 export const COIN_CODES_USDT = [
@@ -46,6 +47,7 @@ export const COIN_CODES_USDT = [
   "CRIX.UPBIT.USDT-SC",
   "CRIX.UPBIT.USDT-XMR",
   "CRIX.UPBIT.USDT-DASH",
+  "CRIX.UPBIT.USDT-TRX",
   "CRIX.COINMARKETCAP.KRW-USDT",
 ];
 
@@ -63,6 +65,7 @@ export const COIN_CODES_KWR = [
   "CRIX.UPBIT.KRW-BTG",
   "CRIX.UPBIT.KRW-SC",
   "CRIX.UPBIT.KRW-XMR",
+  "CRIX.UPBIT.KRW-TRX",
   "CRIX.UPBIT.KRW-DASH",
   // "CRIX.UPBIT.KRW-SNT",
   // "CRIX.UPBIT.KRW-WAVES",
@@ -106,4 +109,3 @@ export const UPBIT_SEND_MESSAGE = [
 ];
 
 // {"type": "crixTrade", "codes": ["CRIX.UPBIT.KRW-XRP"]}, {"type": "crixOrderbook", "codes": ["CRIX.UPBIT.KRW-XRP"]}
-
