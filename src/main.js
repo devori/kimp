@@ -15,9 +15,9 @@ Vue.component('vue-headful', vueHeadful);
 Vue.use(Vuetify);
 Vue.use(VueCurrencyFilter,
   {
-    symbol : 'W',
+    symbol : '',
     thousandsSeparator: ',',
-    fractionCount: 2,
+    fractionCount: 0,
     fractionSeparator: '..',
     symbolPosition: 'read',
     symbolSpacing: true

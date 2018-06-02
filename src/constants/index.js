@@ -1,3 +1,5 @@
+export const BASE_EXCHANGE_RATIO = 1070;
+
 export const COIN_CURRENCY = [
   "KWR",
   "USD",
