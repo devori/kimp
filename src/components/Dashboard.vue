@@ -47,8 +47,8 @@
             <td class="text-xs-right">{{ props.item.size.toFixed(5) }}</td>
             <td class="text-xs-right">{{ props.item.usdtSellPrice | currency('$') }}</td>
             <td class="text-xs-right">{{ props.item.kwrBuyPrice | currency }}</td>
-            <td class="text-xs-right">{{ props.item.fromKrw | currency }}</td>
             <td class="text-xs-right">{{ props.item.fromUsdt | currency('$') }}</td>
+            <td class="text-xs-right">{{ props.item.fromKrw | currency }}</td>
             <td class="text-xs-right">{{ props.item.toKrw | currency }}</td>
           </template>
         </v-data-table>
@@ -80,12 +80,13 @@
           { text: 'SIZE(unit)', value: 'size', align: 'center' },
           { text: 'Price(UDST)', value: 'usdtSellPrice', align: 'center' },
           { text: 'Price(KRW)', value: 'kwrBuyPrice', align: 'center' },
-          { text: 'From(KRW)', value: 'fromKrw', align: 'center' },
           { text: 'From(USDT)', value: 'fromUsdt', align: 'center' },
+          { text: 'From(KRW)', value: 'fromKrw', align: 'center' },
           { text: 'To(KRW)', value: 'toKrw', align: 'center' },
         ],
         pagination: {
           sortBy: 'ratio',
+          rowsPerPage: 30,
           descending: true,
         },
       };
