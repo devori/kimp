@@ -4,6 +4,7 @@
       :title="title"
       description="Description from vue-headful"
     />
+    <h3>기준 환율 : {{baseExchangeRatio | currency}}</h3>
     <v-card>
       <v-card-title>KRW to USDT = {{toUsdtPremium}}%</v-card-title>
       <v-card-text class="elevation-3">
@@ -58,7 +59,6 @@
 
 <script>
   import socketApi from '../api/socketApi';
-  import { BASE_EXCHANGE_RATIO } from '../constants';
 
   export default {
     name: 'Dashboard',
@@ -94,6 +94,9 @@
       title() {
         return this.usdKrwPrice;
       },
+      baseExchangeRatio() {
+        return 1070;
+      },
       usdKrwPrice() {
         return this.$store.state.usdKwrPrice;
       },
@@ -104,7 +107,7 @@
           const fromKrw = size * kwrSellPrice;
           const toKrw = size * usdtBuyPrice;
           const toUsdt = toKrw / this.usdKrwPrice;
-          const ratio = toUsdt / (fromKrw / BASE_EXCHANGE_RATIO);
+          const ratio = toUsdt / (fromKrw / this.baseExchangeRatio);
           return {
             name,
             buyKimp,
@@ -125,7 +128,7 @@
           const fromKrw = size * usdtSellPrice;
           const fromUsdt = fromKrw / this.usdKrwPrice;
           const toKrw = size * kwrBuyPrice;
-          const ratio = toKrw / (fromUsdt * BASE_EXCHANGE_RATIO);
+          const ratio = toKrw / (fromUsdt * this.baseExchangeRatio);
           return {
             name,
             sellKimp,
