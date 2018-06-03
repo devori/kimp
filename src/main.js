@@ -17,7 +17,7 @@ Vue.use(VueCurrencyFilter,
   {
     symbol: 'W',
     thousandsSeparator: ',',
-    fractionCount: 3,
+    fractionCount: 5,
     fractionSeparator: '..',
     symbolPosition: 'read',
     symbolSpacing: true,
